@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-black text-white antialiased;
+        cursor: none; /* Hide default cursor */
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-black;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-white/20 rounded-full hover:bg-white/40 transition-colors;
+    }
+}
+
+@layer components {
+    .glass-panel {
+        @apply bg-white/5 border border-white/10 backdrop-blur-md;
+    }
+}
+
+/* Custom Cursor Styles */
+#custom-cursor {
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+}
+
+#cursor-follower {
+    pointer-events: none;
+    z-index: 9998;
+    mix-blend-mode: difference;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Glitch Effect for Text (Optional, can be used on hover) */
+.glitch-hover:hover {
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0) }
+    20% { transform: translate(-2px, 2px) }
+    40% { transform: translate(-2px, -2px) }
+    60% { transform: translate(2px, 2px) }
+    80% { transform: translate(2px, -2px) }
+    100% { transform: translate(0) }
+}
